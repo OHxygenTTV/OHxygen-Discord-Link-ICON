@@ -1,1 +1,20 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Pages
+        uses: actions/setup-pages@v1
+      - name: Deploy
+        run: |
+          mkdir -p out
+          echo "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>OHxygen Follower Goal</title><link rel='stylesheet' href='styles.css'></head><body><div class='widget'><div class='goal-bar'><div class='goal-progress' id='goal-progress'></div></div><div class='goal-text'><span id='follower-count'>37</span> / <span id='goal-amount'>50</span> Followers</div><div class='branding'><img src='https://imgur.com/Tw1yp2f.png' alt='OHxygen Logo' class='logo'><p>OHxygen Twitch Channel</p></div></div><script>const followerCount = 37;const goalAmount = 50;const progressPercentage = (followerCount / goalAmount) * 100;document.getElementById('goal-progress').style.width = progressPercentage + '%';document.getElementById('follower-count').innerText = followerCount;document.getElementById('goal-amount').innerText = goalAmount;</script></body></html>" > out/index.html
+          echo "body {margin: 0;padding: 0;display: flex;justify-content: center;align-items: center;height: 100vh;background: #121212;font-family: 'Arial', sans-serif;}.widget {text-align: center;background: #1e1e1e;border: 2px solid #00AEEF;border-radius: 10px;padding: 20px;width: 300px;}.goal-bar {background: #333;border-radius: 5px;overflow: hidden;margin-bottom: 10px;}.goal-progress {height: 20px;background: #00AEEF;width: 0;transition: width 0.5s ease-in-out;}.goal-text {color: #fff;font-size: 18px;}.branding {margin-top: 10px;}.branding .logo {width: 50px;height: auto;}.branding p {color: #00AEEF;font-size: 14px;margin: 5px 0 0;}" > out/styles.css
+          cp -R out/* .
 
