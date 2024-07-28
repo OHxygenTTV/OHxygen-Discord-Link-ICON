@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OHxygen Follower Goal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="widget">
+    <div class="goal-bar">
+      <div class="goal-progress" id="goal-progress"></div>
+    </div>
+    <div class="goal-text">
+      <span id="follower-count">37</span> / <span id="goal-amount">50</span> Followers
+    </div>
+    <div class="branding">
+      <img src="https://imgur.com/Tw1yp2f.png" alt="OHxygen Logo" class="logo">
+      <p>OHxygen Twitch Channel</p>
+    </div>
+  </div>
+
+  <script>
+    // Update these variables to match your goal
+    const followerCount = 37;
+    const goalAmount = 50;
+
+    // Calculate the progress percentage
+    const progressPercentage = (followerCount / goalAmount) * 100;
+
+    // Update the progress bar and text
+    document.getElementById('goal-progress').style.width = progressPercentage + '%';
+    document.getElementById('follower-count').innerText = followerCount;
+    document.getElementById('goal-amount').innerText = goalAmount;
+  </script>
+</body>
+</html>
